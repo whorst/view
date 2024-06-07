@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  letters-server:
+    build:
+      context: ./ascii-server
+      tags:
+        - "letters-server:v1"
+    container_name: letters-server
+    ports:
+      - "8081:8081"
+
+  numbers-server:
+    build:
+      context: ./ascii-server
+      tags:
+        - "numbers-server:v1"
+    container_name: numbers-server
+    ports:
+      - "8082:8081"
+  # your service here
+  #...
