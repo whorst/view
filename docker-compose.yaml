@@ -15,7 +15,20 @@ services:
       tags:
         - "numbers-server:v1"
     container_name: numbers-server
+    environment:
+      - NUMBERS_ONLY=true
     ports:
       - "8082:8081"
-  # your service here
-  #...
+
+  ascii-requester:
+    build:
+      context: ./asciirequester
+    container_name: ascii-requester
+    depends_on:
+      - letters-server
+      - numbers-server
+    environment:
+      - LETTERS_ADDRESS=letters-server
+      - LETTERS_PORT=8081
+      - NUMBERS_ADDRESS=numbers-server
+      - NUMBERS_PORT=8081
