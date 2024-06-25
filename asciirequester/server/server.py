@@ -17,7 +17,7 @@ class Server:
         Retrieves the response from the server_utils for the given server address and port.
     """
 
-    def __init__(self, address, port, container):
+    def __init__(self, address, port, server_utils):
         """
         Constructs all the necessary attributes for the Server object.
 
@@ -32,7 +32,7 @@ class Server:
         """
         self._address = address
         self._port = port
-        self._container = container
+        self._server_utils = server_utils
 
     def get_server_response(self):
         """
@@ -43,6 +43,6 @@ class Server:
         response : object
             The response from the server_utils curl.
         """
-        response = self._container.get_server_response(
+        response = self._server_utils.get_server_response(
             self._address, self._port)
         return response
